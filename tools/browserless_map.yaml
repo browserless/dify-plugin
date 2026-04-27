@@ -1,0 +1,150 @@
+identity:
+  name: browserless_map
+  author: browserless
+  label:
+    en_US: browserless_map
+    zh_Hans: browserless_map
+    pt_BR: browserless_map
+    ja_JP: browserless_map
+description:
+  human:
+    en_US: "Discover and map all URLs on a website using Browserless. Crawls a site via sitemaps and link extraction to find all pages. Returns a list of URLs with optional titles and descriptions. Use the search parameter to order results by relevance"
+    zh_Hans: "Discover and map all URLs on a website using Browserless. Crawls a site via sitemaps and link extraction to find all pages. Returns a list of URLs with optional titles and descriptions. Use the search parameter to order results by relevance"
+    pt_BR: "Discover and map all URLs on a website using Browserless. Crawls a site via sitemaps and link extraction to find all pages. Returns a list of URLs with optional titles and descriptions. Use the search parameter to order results by relevance"
+    ja_JP: "Discover and map all URLs on a website using Browserless. Crawls a site via sitemaps and link extraction to find all pages. Returns a list of URLs with optional titles and descriptions. Use the search parameter to order results by relevance"
+  llm: "Discover and map all URLs on a website using Browserless. Crawls a site via sitemaps and link extraction to find all pages. Returns a list of URLs with optional titles and descriptions. Use the search parameter to order results by relevance"
+parameters:
+  - name: url
+    type: string
+    required: true
+    label:
+      en_US: url
+      zh_Hans: url
+      pt_BR: url
+      ja_JP: url
+    human_description:
+      en_US: "The base URL to start mapping from (must be http or https)"
+      zh_Hans: "The base URL to start mapping from (must be http or https)"
+      pt_BR: "The base URL to start mapping from (must be http or https)"
+      ja_JP: "The base URL to start mapping from (must be http or https)"
+    llm_description: "The base URL to start mapping from (must be http or https)"
+    form: llm
+  - name: search
+    type: string
+    required: false
+    label:
+      en_US: search
+      zh_Hans: search
+      pt_BR: search
+      ja_JP: search
+    human_description:
+      en_US: "Search query to order results by relevance"
+      zh_Hans: "Search query to order results by relevance"
+      pt_BR: "Search query to order results by relevance"
+      ja_JP: "Search query to order results by relevance"
+    llm_description: "Search query to order results by relevance"
+    form: llm
+  - name: limit
+    type: number
+    required: false
+    default: 100
+    min: 0
+    max: 5000
+    label:
+      en_US: limit
+      zh_Hans: limit
+      pt_BR: limit
+      ja_JP: limit
+    human_description:
+      en_US: "Maximum number of links to return (default: 100, max: 5000)"
+      zh_Hans: "Maximum number of links to return (default: 100, max: 5000)"
+      pt_BR: "Maximum number of links to return (default: 100, max: 5000)"
+      ja_JP: "Maximum number of links to return (default: 100, max: 5000)"
+    llm_description: "Maximum number of links to return (default: 100, max: 5000)"
+    form: llm
+  - name: sitemap
+    type: select
+    required: false
+    options:
+      - value: "include"
+        label:
+          en_US: "include"
+          zh_Hans: "include"
+          pt_BR: "include"
+          ja_JP: "include"
+      - value: "skip"
+        label:
+          en_US: "skip"
+          zh_Hans: "skip"
+          pt_BR: "skip"
+          ja_JP: "skip"
+      - value: "only"
+        label:
+          en_US: "only"
+          zh_Hans: "only"
+          pt_BR: "only"
+          ja_JP: "only"
+    default: "include"
+    label:
+      en_US: sitemap
+      zh_Hans: sitemap
+      pt_BR: sitemap
+      ja_JP: sitemap
+    human_description:
+      en_US: "Sitemap handling: \"include\" (default), \"skip\", \"only\""
+      zh_Hans: "Sitemap handling: \"include\" (default), \"skip\", \"only\""
+      pt_BR: "Sitemap handling: \"include\" (default), \"skip\", \"only\""
+      ja_JP: "Sitemap handling: \"include\" (default), \"skip\", \"only\""
+    llm_description: "Sitemap handling: \"include\" (default), \"skip\", \"only\""
+    form: llm
+  - name: includeSubdomains
+    type: boolean
+    required: false
+    default: true
+    label:
+      en_US: includeSubdomains
+      zh_Hans: includeSubdomains
+      pt_BR: includeSubdomains
+      ja_JP: includeSubdomains
+    human_description:
+      en_US: "Include URLs from subdomains (default: true)"
+      zh_Hans: "Include URLs from subdomains (default: true)"
+      pt_BR: "Include URLs from subdomains (default: true)"
+      ja_JP: "Include URLs from subdomains (default: true)"
+    llm_description: "Include URLs from subdomains (default: true)"
+    form: llm
+  - name: ignoreQueryParameters
+    type: boolean
+    required: false
+    default: true
+    label:
+      en_US: ignoreQueryParameters
+      zh_Hans: ignoreQueryParameters
+      pt_BR: ignoreQueryParameters
+      ja_JP: ignoreQueryParameters
+    human_description:
+      en_US: "Exclude URLs with query parameters (default: true)"
+      zh_Hans: "Exclude URLs with query parameters (default: true)"
+      pt_BR: "Exclude URLs with query parameters (default: true)"
+      ja_JP: "Exclude URLs with query parameters (default: true)"
+    llm_description: "Exclude URLs with query parameters (default: true)"
+    form: llm
+  - name: timeout
+    type: number
+    required: false
+    min: 0
+    label:
+      en_US: timeout
+      zh_Hans: timeout
+      pt_BR: timeout
+      ja_JP: timeout
+    human_description:
+      en_US: "Request timeout in milliseconds"
+      zh_Hans: "Request timeout in milliseconds"
+      pt_BR: "Request timeout in milliseconds"
+      ja_JP: "Request timeout in milliseconds"
+    llm_description: "Request timeout in milliseconds"
+    form: llm
+extra:
+  python:
+    source: tools/browserless_map.py

@@ -1,0 +1,65 @@
+identity:
+  name: browserless_download
+  author: browserless
+  label:
+    en_US: browserless_download
+    zh_Hans: browserless_download
+    pt_BR: browserless_download
+    ja_JP: browserless_download
+description:
+  human:
+    en_US: "Run custom Puppeteer code on Browserless and return the file that Chrome downloads during execution. Your code should trigger a file download (e.g. clicking a download link). The downloaded file is returned with its original Content-Type. U"
+    zh_Hans: "Run custom Puppeteer code on Browserless and return the file that Chrome downloads during execution. Your code should trigger a file download (e.g. clicking a download link). The downloaded file is returned with its original Content-Type. U"
+    pt_BR: "Run custom Puppeteer code on Browserless and return the file that Chrome downloads during execution. Your code should trigger a file download (e.g. clicking a download link). The downloaded file is returned with its original Content-Type. U"
+    ja_JP: "Run custom Puppeteer code on Browserless and return the file that Chrome downloads during execution. Your code should trigger a file download (e.g. clicking a download link). The downloaded file is returned with its original Content-Type. U"
+  llm: "Run custom Puppeteer code on Browserless and return the file that Chrome downloads during execution. Your code should trigger a file download (e.g. clicking a download link). The downloaded file is returned with its original Content-Type. U"
+parameters:
+  - name: code
+    type: string
+    required: true
+    label:
+      en_US: code
+      zh_Hans: code
+      pt_BR: code
+      ja_JP: code
+    human_description:
+      en_US: "JavaScript (ESM) code to execute. The default export receives { page, context }. During execution the code should trigger a file download in the browser (e.g. clicking a download link)."
+      zh_Hans: "JavaScript (ESM) code to execute. The default export receives { page, context }. During execution the code should trigger a file download in the browser (e.g. clicking a download link)."
+      pt_BR: "JavaScript (ESM) code to execute. The default export receives { page, context }. During execution the code should trigger a file download in the browser (e.g. clicking a download link)."
+      ja_JP: "JavaScript (ESM) code to execute. The default export receives { page, context }. During execution the code should trigger a file download in the browser (e.g. clicking a download link)."
+    llm_description: "JavaScript (ESM) code to execute. The default export receives { page, context }. During execution the code should trigger a file download in the browser (e.g. clicking a download link)."
+    form: llm
+  - name: context
+    type: string
+    required: false
+    label:
+      en_US: context
+      zh_Hans: context
+      pt_BR: context
+      ja_JP: context
+    human_description:
+      en_US: "Optional context object passed to the function."
+      zh_Hans: "Optional context object passed to the function."
+      pt_BR: "Optional context object passed to the function."
+      ja_JP: "Optional context object passed to the function."
+    llm_description: "Optional context object passed to the function. Provide as JSON."
+    form: llm
+  - name: timeout
+    type: number
+    required: false
+    min: 0
+    label:
+      en_US: timeout
+      zh_Hans: timeout
+      pt_BR: timeout
+      ja_JP: timeout
+    human_description:
+      en_US: "Request timeout in milliseconds"
+      zh_Hans: "Request timeout in milliseconds"
+      pt_BR: "Request timeout in milliseconds"
+      ja_JP: "Request timeout in milliseconds"
+    llm_description: "Request timeout in milliseconds"
+    form: llm
+extra:
+  python:
+    source: tools/browserless_download.py

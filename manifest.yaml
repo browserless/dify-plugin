@@ -1,0 +1,37 @@
+version: 0.0.1
+type: plugin
+author: browserless
+name: browserless
+label:
+  en_US: browserless
+  ja_JP: browserless
+  zh_Hans: browserless
+  pt_BR: browserless
+description:
+  en_US: Headless browser automation for AI agents — scrape, navigate, fill forms, screenshot, and run multi-step web research via Browserless MCP.
+  ja_JP: Headless browser automation for AI agents — scrape, navigate, fill forms, screenshot, and run multi-step web research via Browserless MCP.
+  zh_Hans: Headless browser automation for AI agents — scrape, navigate, fill forms, screenshot, and run multi-step web research via Browserless MCP.
+  pt_BR: Headless browser automation for AI agents — scrape, navigate, fill forms, screenshot, and run multi-step web research via Browserless MCP.
+icon: icon.svg
+icon_dark: icon-dark.svg
+resource:
+  memory: 268435456
+  permission:
+    tool:
+      enabled: true
+plugins:
+  tools:
+    - provider/browserless.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: null
+created_at: 2026-04-24T19:54:11.465556-05:00
+privacy: PRIVACY.md
+verified: false

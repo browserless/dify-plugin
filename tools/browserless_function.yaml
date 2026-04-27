@@ -1,0 +1,65 @@
+identity:
+  name: browserless_function
+  author: browserless
+  label:
+    en_US: browserless_function
+    zh_Hans: browserless_function
+    pt_BR: browserless_function
+    ja_JP: browserless_function
+description:
+  human:
+    en_US: "Execute custom Puppeteer JavaScript code on the Browserless cloud. Your function receives a Puppeteer `page` object and optional `context` data. Return { data, type } to control the response payload and Content-Type. Useful for complex scra"
+    zh_Hans: "Execute custom Puppeteer JavaScript code on the Browserless cloud. Your function receives a Puppeteer `page` object and optional `context` data. Return { data, type } to control the response payload and Content-Type. Useful for complex scra"
+    pt_BR: "Execute custom Puppeteer JavaScript code on the Browserless cloud. Your function receives a Puppeteer `page` object and optional `context` data. Return { data, type } to control the response payload and Content-Type. Useful for complex scra"
+    ja_JP: "Execute custom Puppeteer JavaScript code on the Browserless cloud. Your function receives a Puppeteer `page` object and optional `context` data. Return { data, type } to control the response payload and Content-Type. Useful for complex scra"
+  llm: "Execute custom Puppeteer JavaScript code on the Browserless cloud. Your function receives a Puppeteer `page` object and optional `context` data. Return { data, type } to control the response payload and Content-Type. Useful for complex scra"
+parameters:
+  - name: code
+    type: string
+    required: true
+    label:
+      en_US: code
+      zh_Hans: code
+      pt_BR: code
+      ja_JP: code
+    human_description:
+      en_US: "JavaScript (ESM) code to execute. The default export receives { page, context } and should return { data, type } where data is the response payload and type is the Content-Type string."
+      zh_Hans: "JavaScript (ESM) code to execute. The default export receives { page, context } and should return { data, type } where data is the response payload and type is the Content-Type string."
+      pt_BR: "JavaScript (ESM) code to execute. The default export receives { page, context } and should return { data, type } where data is the response payload and type is the Content-Type string."
+      ja_JP: "JavaScript (ESM) code to execute. The default export receives { page, context } and should return { data, type } where data is the response payload and type is the Content-Type string."
+    llm_description: "JavaScript (ESM) code to execute. The default export receives { page, context } and should return { data, type } where data is the response payload and type is the Content-Type string."
+    form: llm
+  - name: context
+    type: string
+    required: false
+    label:
+      en_US: context
+      zh_Hans: context
+      pt_BR: context
+      ja_JP: context
+    human_description:
+      en_US: "Optional context object passed to the function as the second argument."
+      zh_Hans: "Optional context object passed to the function as the second argument."
+      pt_BR: "Optional context object passed to the function as the second argument."
+      ja_JP: "Optional context object passed to the function as the second argument."
+    llm_description: "Optional context object passed to the function as the second argument. Provide as JSON."
+    form: llm
+  - name: timeout
+    type: number
+    required: false
+    min: 0
+    label:
+      en_US: timeout
+      zh_Hans: timeout
+      pt_BR: timeout
+      ja_JP: timeout
+    human_description:
+      en_US: "Request timeout in milliseconds"
+      zh_Hans: "Request timeout in milliseconds"
+      pt_BR: "Request timeout in milliseconds"
+      ja_JP: "Request timeout in milliseconds"
+    llm_description: "Request timeout in milliseconds"
+    form: llm
+extra:
+  python:
+    source: tools/browserless_function.py

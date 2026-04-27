@@ -1,0 +1,66 @@
+identity:
+  name: browserless_smartscraper
+  author: browserless
+  label:
+    en_US: browserless_smartscraper
+    zh_Hans: browserless_smartscraper
+    pt_BR: browserless_smartscraper
+    ja_JP: browserless_smartscraper
+description:
+  human:
+    en_US: "Scrape any webpage using the Browserless smart scraper. Returns page content in requested formats (markdown, html, screenshot, pdf, links). Handles JavaScript-heavy pages, anti-bot measures, and multiple scraping strategies automatically."
+    zh_Hans: "Scrape any webpage using the Browserless smart scraper. Returns page content in requested formats (markdown, html, screenshot, pdf, links). Handles JavaScript-heavy pages, anti-bot measures, and multiple scraping strategies automatically."
+    pt_BR: "Scrape any webpage using the Browserless smart scraper. Returns page content in requested formats (markdown, html, screenshot, pdf, links). Handles JavaScript-heavy pages, anti-bot measures, and multiple scraping strategies automatically."
+    ja_JP: "Scrape any webpage using the Browserless smart scraper. Returns page content in requested formats (markdown, html, screenshot, pdf, links). Handles JavaScript-heavy pages, anti-bot measures, and multiple scraping strategies automatically."
+  llm: "Scrape any webpage using the Browserless smart scraper. Returns page content in requested formats (markdown, html, screenshot, pdf, links). Handles JavaScript-heavy pages, anti-bot measures, and multiple scraping strategies automatically."
+parameters:
+  - name: url
+    type: string
+    required: true
+    label:
+      en_US: url
+      zh_Hans: url
+      pt_BR: url
+      ja_JP: url
+    human_description:
+      en_US: "The URL to scrape (must be http or https)"
+      zh_Hans: "The URL to scrape (must be http or https)"
+      pt_BR: "The URL to scrape (must be http or https)"
+      ja_JP: "The URL to scrape (must be http or https)"
+    llm_description: "The URL to scrape (must be http or https)"
+    form: llm
+  - name: formats
+    type: string
+    required: false
+    default: "[\"markdown\"]"
+    label:
+      en_US: formats
+      zh_Hans: formats
+      pt_BR: formats
+      ja_JP: formats
+    human_description:
+      en_US: "Output formats to include: \"markdown\", \"html\", \"screenshot\", \"pdf\", \"links\". Defaults to [\"markdown\"]."
+      zh_Hans: "Output formats to include: \"markdown\", \"html\", \"screenshot\", \"pdf\", \"links\". Defaults to [\"markdown\"]."
+      pt_BR: "Output formats to include: \"markdown\", \"html\", \"screenshot\", \"pdf\", \"links\". Defaults to [\"markdown\"]."
+      ja_JP: "Output formats to include: \"markdown\", \"html\", \"screenshot\", \"pdf\", \"links\". Defaults to [\"markdown\"]."
+    llm_description: "Output formats to include: \"markdown\", \"html\", \"screenshot\", \"pdf\", \"links\". Defaults to [\"markdown\"]. Provide as JSON."
+    form: llm
+  - name: timeout
+    type: number
+    required: false
+    min: 0
+    label:
+      en_US: timeout
+      zh_Hans: timeout
+      pt_BR: timeout
+      ja_JP: timeout
+    human_description:
+      en_US: "Request timeout in milliseconds"
+      zh_Hans: "Request timeout in milliseconds"
+      pt_BR: "Request timeout in milliseconds"
+      ja_JP: "Request timeout in milliseconds"
+    llm_description: "Request timeout in milliseconds"
+    form: llm
+extra:
+  python:
+    source: tools/browserless_smartscraper.py

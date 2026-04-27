@@ -1,0 +1,80 @@
+identity:
+  name: browserless_performance
+  author: browserless
+  label:
+    en_US: browserless_performance
+    zh_Hans: browserless_performance
+    pt_BR: browserless_performance
+    ja_JP: browserless_performance
+description:
+  human:
+    en_US: "Run a Lighthouse performance audit on any URL via the Browserless /performance API. Returns scores and metrics for accessibility, best practices, performance, PWA, and SEO. Optionally filter by category or supply performance budgets. Note: "
+    zh_Hans: "Run a Lighthouse performance audit on any URL via the Browserless /performance API. Returns scores and metrics for accessibility, best practices, performance, PWA, and SEO. Optionally filter by category or supply performance budgets. Note: "
+    pt_BR: "Run a Lighthouse performance audit on any URL via the Browserless /performance API. Returns scores and metrics for accessibility, best practices, performance, PWA, and SEO. Optionally filter by category or supply performance budgets. Note: "
+    ja_JP: "Run a Lighthouse performance audit on any URL via the Browserless /performance API. Returns scores and metrics for accessibility, best practices, performance, PWA, and SEO. Optionally filter by category or supply performance budgets. Note: "
+  llm: "Run a Lighthouse performance audit on any URL via the Browserless /performance API. Returns scores and metrics for accessibility, best practices, performance, PWA, and SEO. Optionally filter by category or supply performance budgets. Note: "
+parameters:
+  - name: url
+    type: string
+    required: true
+    label:
+      en_US: url
+      zh_Hans: url
+      pt_BR: url
+      ja_JP: url
+    human_description:
+      en_US: "The URL to audit (must be http or https)"
+      zh_Hans: "The URL to audit (must be http or https)"
+      pt_BR: "The URL to audit (must be http or https)"
+      ja_JP: "The URL to audit (must be http or https)"
+    llm_description: "The URL to audit (must be http or https)"
+    form: llm
+  - name: categories
+    type: string
+    required: false
+    label:
+      en_US: categories
+      zh_Hans: categories
+      pt_BR: categories
+      ja_JP: categories
+    human_description:
+      en_US: "Lighthouse categories to audit: \"accessibility\", \"best-practices\", \"performance\", \"pwa\", \"seo\". Omit for all categories."
+      zh_Hans: "Lighthouse categories to audit: \"accessibility\", \"best-practices\", \"performance\", \"pwa\", \"seo\". Omit for all categories."
+      pt_BR: "Lighthouse categories to audit: \"accessibility\", \"best-practices\", \"performance\", \"pwa\", \"seo\". Omit for all categories."
+      ja_JP: "Lighthouse categories to audit: \"accessibility\", \"best-practices\", \"performance\", \"pwa\", \"seo\". Omit for all categories."
+    llm_description: "Lighthouse categories to audit: \"accessibility\", \"best-practices\", \"performance\", \"pwa\", \"seo\". Omit for all categories. Provide as JSON."
+    form: llm
+  - name: budgets
+    type: string
+    required: false
+    label:
+      en_US: budgets
+      zh_Hans: budgets
+      pt_BR: budgets
+      ja_JP: budgets
+    human_description:
+      en_US: "Lighthouse performance budgets array. See https://developer.chrome.com/docs/lighthouse/performance/performance-budgets"
+      zh_Hans: "Lighthouse performance budgets array. See https://developer.chrome.com/docs/lighthouse/performance/performance-budgets"
+      pt_BR: "Lighthouse performance budgets array. See https://developer.chrome.com/docs/lighthouse/performance/performance-budgets"
+      ja_JP: "Lighthouse performance budgets array. See https://developer.chrome.com/docs/lighthouse/performance/performance-budgets"
+    llm_description: "Lighthouse performance budgets array. See https://developer.chrome.com/docs/lighthouse/performance/performance-budgets Provide as JSON."
+    form: llm
+  - name: timeout
+    type: number
+    required: false
+    min: 0
+    label:
+      en_US: timeout
+      zh_Hans: timeout
+      pt_BR: timeout
+      ja_JP: timeout
+    human_description:
+      en_US: "Request timeout in milliseconds (audits can take 30s–120s)"
+      zh_Hans: "Request timeout in milliseconds (audits can take 30s–120s)"
+      pt_BR: "Request timeout in milliseconds (audits can take 30s–120s)"
+      ja_JP: "Request timeout in milliseconds (audits can take 30s–120s)"
+    llm_description: "Request timeout in milliseconds (audits can take 30s–120s)"
+    form: llm
+extra:
+  python:
+    source: tools/browserless_performance.py

@@ -1,0 +1,47 @@
+identity:
+  author: browserless
+  name: browserless
+  label:
+    en_US: Browserless
+    zh_Hans: Browserless
+    pt_BR: Browserless
+    ja_JP: Browserless
+  description:
+    en_US: Headless browser automation for AI agents — scrape, navigate, fill forms, screenshot, and run multi-step web research via the Browserless MCP server.
+    zh_Hans: 通过 Browserless MCP 服务器为 AI 代理提供无头浏览器自动化 — 抓取、导航、填表、截图和多步研究。
+    pt_BR: Automação de navegador headless para agentes de IA via Browserless MCP — raspagem, navegação, preenchimento de formulários, capturas de tela e pesquisa em várias etapas.
+    ja_JP: Browserless MCP を介した AI エージェント向けのヘッドレスブラウザ自動化 — スクレイピング、ナビゲーション、フォーム入力、スクリーンショット、多段階のウェブ調査。
+  icon: icon.svg
+credentials_schema:
+  - name: api_key
+    type: secret-input
+    required: true
+    label:
+      en_US: API Token
+      zh_Hans: API 令牌
+      pt_BR: Token da API
+      ja_JP: API トークン
+    placeholder:
+      en_US: Your Browserless API token
+      zh_Hans: 你的 Browserless API 令牌
+      pt_BR: Seu token da API Browserless
+      ja_JP: Browserless API トークン
+    help:
+      en_US: Get a token at https://www.browserless.io/signup/email. Used to authenticate calls to mcp.browserless.io.
+      zh_Hans: 在 https://www.browserless.io/signup/email 获取令牌,用于对 mcp.browserless.io 的请求进行身份验证。
+      pt_BR: Obtenha um token em https://www.browserless.io/signup/email. Usado para autenticar chamadas ao mcp.browserless.io.
+      ja_JP: https://www.browserless.io/signup/email でトークンを取得。mcp.browserless.io への呼び出しの認証に使用します。
+    url: https://www.browserless.io/signup/email
+tools:
+  - tools/browserless_smartscraper.yaml
+  - tools/browserless_search.yaml
+  - tools/browserless_map.yaml
+  - tools/browserless_crawl.yaml
+  - tools/browserless_export.yaml
+  - tools/browserless_function.yaml
+  - tools/browserless_download.yaml
+  - tools/browserless_performance.yaml
+  - tools/browserless_agent.yaml
+extra:
+  python:
+    source: provider/browserless.py

@@ -1,0 +1,278 @@
+identity:
+  name: browserless_crawl
+  author: browserless
+  label:
+    en_US: browserless_crawl
+    zh_Hans: browserless_crawl
+    pt_BR: browserless_crawl
+    ja_JP: browserless_crawl
+description:
+  human:
+    en_US: "Crawl a website and scrape every discovered page using Browserless. Starts from a seed URL and follows links up to a configurable depth. Supports sitemap discovery, path filtering, subdomain handling, and custom scrape options. Returns scra"
+    zh_Hans: "Crawl a website and scrape every discovered page using Browserless. Starts from a seed URL and follows links up to a configurable depth. Supports sitemap discovery, path filtering, subdomain handling, and custom scrape options. Returns scra"
+    pt_BR: "Crawl a website and scrape every discovered page using Browserless. Starts from a seed URL and follows links up to a configurable depth. Supports sitemap discovery, path filtering, subdomain handling, and custom scrape options. Returns scra"
+    ja_JP: "Crawl a website and scrape every discovered page using Browserless. Starts from a seed URL and follows links up to a configurable depth. Supports sitemap discovery, path filtering, subdomain handling, and custom scrape options. Returns scra"
+  llm: "Crawl a website and scrape every discovered page using Browserless. Starts from a seed URL and follows links up to a configurable depth. Supports sitemap discovery, path filtering, subdomain handling, and custom scrape options. Returns scra"
+parameters:
+  - name: url
+    type: string
+    required: true
+    label:
+      en_US: url
+      zh_Hans: url
+      pt_BR: url
+      ja_JP: url
+    human_description:
+      en_US: "The URL to crawl (must be http or https)"
+      zh_Hans: "The URL to crawl (must be http or https)"
+      pt_BR: "The URL to crawl (must be http or https)"
+      ja_JP: "The URL to crawl (must be http or https)"
+    llm_description: "The URL to crawl (must be http or https)"
+    form: llm
+  - name: limit
+    type: number
+    required: false
+    default: 100
+    min: 0
+    max: 10000
+    label:
+      en_US: limit
+      zh_Hans: limit
+      pt_BR: limit
+      ja_JP: limit
+    human_description:
+      en_US: "Maximum number of pages to crawl (default: 100)"
+      zh_Hans: "Maximum number of pages to crawl (default: 100)"
+      pt_BR: "Maximum number of pages to crawl (default: 100)"
+      ja_JP: "Maximum number of pages to crawl (default: 100)"
+    llm_description: "Maximum number of pages to crawl (default: 100)"
+    form: llm
+  - name: maxDepth
+    type: number
+    required: false
+    default: 5
+    label:
+      en_US: maxDepth
+      zh_Hans: maxDepth
+      pt_BR: maxDepth
+      ja_JP: maxDepth
+    human_description:
+      en_US: "Maximum link-follow depth from the root URL (default: 5)"
+      zh_Hans: "Maximum link-follow depth from the root URL (default: 5)"
+      pt_BR: "Maximum link-follow depth from the root URL (default: 5)"
+      ja_JP: "Maximum link-follow depth from the root URL (default: 5)"
+    llm_description: "Maximum link-follow depth from the root URL (default: 5)"
+    form: llm
+  - name: maxRetries
+    type: number
+    required: false
+    default: 1
+    label:
+      en_US: maxRetries
+      zh_Hans: maxRetries
+      pt_BR: maxRetries
+      ja_JP: maxRetries
+    human_description:
+      en_US: "Number of retry attempts per failed page (default: 1)"
+      zh_Hans: "Number of retry attempts per failed page (default: 1)"
+      pt_BR: "Number of retry attempts per failed page (default: 1)"
+      ja_JP: "Number of retry attempts per failed page (default: 1)"
+    llm_description: "Number of retry attempts per failed page (default: 1)"
+    form: llm
+  - name: allowExternalLinks
+    type: boolean
+    required: false
+    default: false
+    label:
+      en_US: allowExternalLinks
+      zh_Hans: allowExternalLinks
+      pt_BR: allowExternalLinks
+      ja_JP: allowExternalLinks
+    human_description:
+      en_US: "Whether to follow links to external domains"
+      zh_Hans: "Whether to follow links to external domains"
+      pt_BR: "Whether to follow links to external domains"
+      ja_JP: "Whether to follow links to external domains"
+    llm_description: "Whether to follow links to external domains"
+    form: llm
+  - name: allowSubdomains
+    type: boolean
+    required: false
+    default: false
+    label:
+      en_US: allowSubdomains
+      zh_Hans: allowSubdomains
+      pt_BR: allowSubdomains
+      ja_JP: allowSubdomains
+    human_description:
+      en_US: "Whether to follow links to subdomains"
+      zh_Hans: "Whether to follow links to subdomains"
+      pt_BR: "Whether to follow links to subdomains"
+      ja_JP: "Whether to follow links to subdomains"
+    llm_description: "Whether to follow links to subdomains"
+    form: llm
+  - name: sitemap
+    type: select
+    required: false
+    options:
+      - value: "auto"
+        label:
+          en_US: "auto"
+          zh_Hans: "auto"
+          pt_BR: "auto"
+          ja_JP: "auto"
+      - value: "force"
+        label:
+          en_US: "force"
+          zh_Hans: "force"
+          pt_BR: "force"
+          ja_JP: "force"
+      - value: "skip"
+        label:
+          en_US: "skip"
+          zh_Hans: "skip"
+          pt_BR: "skip"
+          ja_JP: "skip"
+    default: "auto"
+    label:
+      en_US: sitemap
+      zh_Hans: sitemap
+      pt_BR: sitemap
+      ja_JP: sitemap
+    human_description:
+      en_US: "Sitemap handling: \"auto\" (default), \"force\", \"skip\""
+      zh_Hans: "Sitemap handling: \"auto\" (default), \"force\", \"skip\""
+      pt_BR: "Sitemap handling: \"auto\" (default), \"force\", \"skip\""
+      ja_JP: "Sitemap handling: \"auto\" (default), \"force\", \"skip\""
+    llm_description: "Sitemap handling: \"auto\" (default), \"force\", \"skip\""
+    form: llm
+  - name: includePaths
+    type: string
+    required: false
+    label:
+      en_US: includePaths
+      zh_Hans: includePaths
+      pt_BR: includePaths
+      ja_JP: includePaths
+    human_description:
+      en_US: "Regex patterns for URL paths to include"
+      zh_Hans: "Regex patterns for URL paths to include"
+      pt_BR: "Regex patterns for URL paths to include"
+      ja_JP: "Regex patterns for URL paths to include"
+    llm_description: "Regex patterns for URL paths to include Provide as JSON."
+    form: llm
+  - name: excludePaths
+    type: string
+    required: false
+    label:
+      en_US: excludePaths
+      zh_Hans: excludePaths
+      pt_BR: excludePaths
+      ja_JP: excludePaths
+    human_description:
+      en_US: "Regex patterns for URL paths to exclude"
+      zh_Hans: "Regex patterns for URL paths to exclude"
+      pt_BR: "Regex patterns for URL paths to exclude"
+      ja_JP: "Regex patterns for URL paths to exclude"
+    llm_description: "Regex patterns for URL paths to exclude Provide as JSON."
+    form: llm
+  - name: delay
+    type: number
+    required: false
+    default: 200
+    label:
+      en_US: delay
+      zh_Hans: delay
+      pt_BR: delay
+      ja_JP: delay
+    human_description:
+      en_US: "Delay between requests in milliseconds (default: 200)"
+      zh_Hans: "Delay between requests in milliseconds (default: 200)"
+      pt_BR: "Delay between requests in milliseconds (default: 200)"
+      ja_JP: "Delay between requests in milliseconds (default: 200)"
+    llm_description: "Delay between requests in milliseconds (default: 200)"
+    form: llm
+  - name: scrapeOptions
+    type: string
+    required: false
+    label:
+      en_US: scrapeOptions
+      zh_Hans: scrapeOptions
+      pt_BR: scrapeOptions
+      ja_JP: scrapeOptions
+    human_description:
+      en_US: "Options controlling how each page is scraped"
+      zh_Hans: "Options controlling how each page is scraped"
+      pt_BR: "Options controlling how each page is scraped"
+      ja_JP: "Options controlling how each page is scraped"
+    llm_description: "Options controlling how each page is scraped Provide as JSON."
+    form: llm
+  - name: waitForCompletion
+    type: boolean
+    required: false
+    default: true
+    label:
+      en_US: waitForCompletion
+      zh_Hans: waitForCompletion
+      pt_BR: waitForCompletion
+      ja_JP: waitForCompletion
+    human_description:
+      en_US: "Whether to wait for crawl completion (default: true). If false, returns immediately with crawl ID."
+      zh_Hans: "Whether to wait for crawl completion (default: true). If false, returns immediately with crawl ID."
+      pt_BR: "Whether to wait for crawl completion (default: true). If false, returns immediately with crawl ID."
+      ja_JP: "Whether to wait for crawl completion (default: true). If false, returns immediately with crawl ID."
+    llm_description: "Whether to wait for crawl completion (default: true). If false, returns immediately with crawl ID."
+    form: llm
+  - name: pollInterval
+    type: number
+    required: false
+    default: 5000
+    min: 0
+    label:
+      en_US: pollInterval
+      zh_Hans: pollInterval
+      pt_BR: pollInterval
+      ja_JP: pollInterval
+    human_description:
+      en_US: "Polling interval in ms when waiting for completion (default: 5000)"
+      zh_Hans: "Polling interval in ms when waiting for completion (default: 5000)"
+      pt_BR: "Polling interval in ms when waiting for completion (default: 5000)"
+      ja_JP: "Polling interval in ms when waiting for completion (default: 5000)"
+    llm_description: "Polling interval in ms when waiting for completion (default: 5000)"
+    form: llm
+  - name: maxWaitTime
+    type: number
+    required: false
+    default: 300000
+    min: 0
+    label:
+      en_US: maxWaitTime
+      zh_Hans: maxWaitTime
+      pt_BR: maxWaitTime
+      ja_JP: maxWaitTime
+    human_description:
+      en_US: "Maximum time in ms to wait for crawl completion when waitForCompletion is true (default: 300000 = 5 minutes)"
+      zh_Hans: "Maximum time in ms to wait for crawl completion when waitForCompletion is true (default: 300000 = 5 minutes)"
+      pt_BR: "Maximum time in ms to wait for crawl completion when waitForCompletion is true (default: 300000 = 5 minutes)"
+      ja_JP: "Maximum time in ms to wait for crawl completion when waitForCompletion is true (default: 300000 = 5 minutes)"
+    llm_description: "Maximum time in ms to wait for crawl completion when waitForCompletion is true (default: 300000 = 5 minutes)"
+    form: llm
+  - name: timeout
+    type: number
+    required: false
+    min: 0
+    label:
+      en_US: timeout
+      zh_Hans: timeout
+      pt_BR: timeout
+      ja_JP: timeout
+    human_description:
+      en_US: "HTTP request timeout in milliseconds for API calls (default: 30000)"
+      zh_Hans: "HTTP request timeout in milliseconds for API calls (default: 30000)"
+      pt_BR: "HTTP request timeout in milliseconds for API calls (default: 30000)"
+      ja_JP: "HTTP request timeout in milliseconds for API calls (default: 30000)"
+    llm_description: "HTTP request timeout in milliseconds for API calls (default: 30000)"
+    form: llm
+extra:
+  python:
+    source: tools/browserless_crawl.py

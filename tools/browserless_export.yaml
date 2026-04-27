@@ -1,0 +1,110 @@
+identity:
+  name: browserless_export
+  author: browserless
+  label:
+    en_US: browserless_export
+    zh_Hans: browserless_export
+    pt_BR: browserless_export
+    ja_JP: browserless_export
+description:
+  human:
+    en_US: "Export a webpage from a URL via the Browserless /export API. Fetches the URL and returns its content in the native format (HTML, PDF, image, etc.). Automatically detects the content type. Set includeResources=true to bundle all page assets "
+    zh_Hans: "Export a webpage from a URL via the Browserless /export API. Fetches the URL and returns its content in the native format (HTML, PDF, image, etc.). Automatically detects the content type. Set includeResources=true to bundle all page assets "
+    pt_BR: "Export a webpage from a URL via the Browserless /export API. Fetches the URL and returns its content in the native format (HTML, PDF, image, etc.). Automatically detects the content type. Set includeResources=true to bundle all page assets "
+    ja_JP: "Export a webpage from a URL via the Browserless /export API. Fetches the URL and returns its content in the native format (HTML, PDF, image, etc.). Automatically detects the content type. Set includeResources=true to bundle all page assets "
+  llm: "Export a webpage from a URL via the Browserless /export API. Fetches the URL and returns its content in the native format (HTML, PDF, image, etc.). Automatically detects the content type. Set includeResources=true to bundle all page assets "
+parameters:
+  - name: url
+    type: string
+    required: true
+    label:
+      en_US: url
+      zh_Hans: url
+      pt_BR: url
+      ja_JP: url
+    human_description:
+      en_US: "The URL to export (must be http or https)"
+      zh_Hans: "The URL to export (must be http or https)"
+      pt_BR: "The URL to export (must be http or https)"
+      ja_JP: "The URL to export (must be http or https)"
+    llm_description: "The URL to export (must be http or https)"
+    form: llm
+  - name: gotoOptions
+    type: string
+    required: false
+    label:
+      en_US: gotoOptions
+      zh_Hans: gotoOptions
+      pt_BR: gotoOptions
+      ja_JP: gotoOptions
+    human_description:
+      en_US: "Puppeteer Page.goto() options for navigation"
+      zh_Hans: "Puppeteer Page.goto() options for navigation"
+      pt_BR: "Puppeteer Page.goto() options for navigation"
+      ja_JP: "Puppeteer Page.goto() options for navigation"
+    llm_description: "Puppeteer Page.goto() options for navigation Provide as JSON."
+    form: llm
+  - name: bestAttempt
+    type: boolean
+    required: false
+    label:
+      en_US: bestAttempt
+      zh_Hans: bestAttempt
+      pt_BR: bestAttempt
+      ja_JP: bestAttempt
+    human_description:
+      en_US: "When true, proceed even if awaited events fail or timeout."
+      zh_Hans: "When true, proceed even if awaited events fail or timeout."
+      pt_BR: "When true, proceed even if awaited events fail or timeout."
+      ja_JP: "When true, proceed even if awaited events fail or timeout."
+    llm_description: "When true, proceed even if awaited events fail or timeout."
+    form: llm
+  - name: includeResources
+    type: boolean
+    required: false
+    label:
+      en_US: includeResources
+      zh_Hans: includeResources
+      pt_BR: includeResources
+      ja_JP: includeResources
+    human_description:
+      en_US: "When true, bundle all linked resources (CSS, JS, images) into a ZIP file."
+      zh_Hans: "When true, bundle all linked resources (CSS, JS, images) into a ZIP file."
+      pt_BR: "When true, bundle all linked resources (CSS, JS, images) into a ZIP file."
+      ja_JP: "When true, bundle all linked resources (CSS, JS, images) into a ZIP file."
+    llm_description: "When true, bundle all linked resources (CSS, JS, images) into a ZIP file."
+    form: llm
+  - name: waitForTimeout
+    type: number
+    required: false
+    label:
+      en_US: waitForTimeout
+      zh_Hans: waitForTimeout
+      pt_BR: waitForTimeout
+      ja_JP: waitForTimeout
+    human_description:
+      en_US: "Milliseconds to wait after page load before exporting"
+      zh_Hans: "Milliseconds to wait after page load before exporting"
+      pt_BR: "Milliseconds to wait after page load before exporting"
+      ja_JP: "Milliseconds to wait after page load before exporting"
+    llm_description: "Milliseconds to wait after page load before exporting"
+    form: llm
+  - name: timeout
+    type: number
+    required: false
+    min: 0
+    label:
+      en_US: timeout
+      zh_Hans: timeout
+      pt_BR: timeout
+      ja_JP: timeout
+    human_description:
+      en_US: "Request timeout in milliseconds"
+      zh_Hans: "Request timeout in milliseconds"
+      pt_BR: "Request timeout in milliseconds"
+      ja_JP: "Request timeout in milliseconds"
+    llm_description: "Request timeout in milliseconds"
+    form: llm
+extra:
+  python:
+    source: tools/browserless_export.py

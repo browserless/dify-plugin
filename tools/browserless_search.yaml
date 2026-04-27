@@ -1,0 +1,200 @@
+identity:
+  name: browserless_search
+  author: browserless
+  label:
+    en_US: browserless_search
+    zh_Hans: browserless_search
+    pt_BR: browserless_search
+    ja_JP: browserless_search
+description:
+  human:
+    en_US: "Search the web using Browserless and optionally scrape each result. Performs web searches via SearXNG and can return results from web, news, or images. Optionally scrape each result URL to get markdown, HTML, links, or screenshots. Useful f"
+    zh_Hans: "Search the web using Browserless and optionally scrape each result. Performs web searches via SearXNG and can return results from web, news, or images. Optionally scrape each result URL to get markdown, HTML, links, or screenshots. Useful f"
+    pt_BR: "Search the web using Browserless and optionally scrape each result. Performs web searches via SearXNG and can return results from web, news, or images. Optionally scrape each result URL to get markdown, HTML, links, or screenshots. Useful f"
+    ja_JP: "Search the web using Browserless and optionally scrape each result. Performs web searches via SearXNG and can return results from web, news, or images. Optionally scrape each result URL to get markdown, HTML, links, or screenshots. Useful f"
+  llm: "Search the web using Browserless and optionally scrape each result. Performs web searches via SearXNG and can return results from web, news, or images. Optionally scrape each result URL to get markdown, HTML, links, or screenshots. Useful f"
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: query
+      zh_Hans: query
+      pt_BR: query
+      ja_JP: query
+    human_description:
+      en_US: "The search query string"
+      zh_Hans: "The search query string"
+      pt_BR: "The search query string"
+      ja_JP: "The search query string"
+    llm_description: "The search query string"
+    form: llm
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    min: 0
+    max: 100
+    label:
+      en_US: limit
+      zh_Hans: limit
+      pt_BR: limit
+      ja_JP: limit
+    human_description:
+      en_US: "Maximum number of results to return (default: 10, max: 100)"
+      zh_Hans: "Maximum number of results to return (default: 10, max: 100)"
+      pt_BR: "Maximum number of results to return (default: 10, max: 100)"
+      ja_JP: "Maximum number of results to return (default: 10, max: 100)"
+    llm_description: "Maximum number of results to return (default: 10, max: 100)"
+    form: llm
+  - name: lang
+    type: string
+    required: false
+    default: "en"
+    label:
+      en_US: lang
+      zh_Hans: lang
+      pt_BR: lang
+      ja_JP: lang
+    human_description:
+      en_US: "Language code for search results (default: \"en\")"
+      zh_Hans: "Language code for search results (default: \"en\")"
+      pt_BR: "Language code for search results (default: \"en\")"
+      ja_JP: "Language code for search results (default: \"en\")"
+    llm_description: "Language code for search results (default: \"en\")"
+    form: llm
+  - name: country
+    type: string
+    required: false
+    label:
+      en_US: country
+      zh_Hans: country
+      pt_BR: country
+      ja_JP: country
+    human_description:
+      en_US: "Country code for geo-targeted results"
+      zh_Hans: "Country code for geo-targeted results"
+      pt_BR: "Country code for geo-targeted results"
+      ja_JP: "Country code for geo-targeted results"
+    llm_description: "Country code for geo-targeted results"
+    form: llm
+  - name: location
+    type: string
+    required: false
+    label:
+      en_US: location
+      zh_Hans: location
+      pt_BR: location
+      ja_JP: location
+    human_description:
+      en_US: "Location string for geo-targeted results"
+      zh_Hans: "Location string for geo-targeted results"
+      pt_BR: "Location string for geo-targeted results"
+      ja_JP: "Location string for geo-targeted results"
+    llm_description: "Location string for geo-targeted results"
+    form: llm
+  - name: tbs
+    type: select
+    required: false
+    options:
+      - value: "day"
+        label:
+          en_US: "day"
+          zh_Hans: "day"
+          pt_BR: "day"
+          ja_JP: "day"
+      - value: "week"
+        label:
+          en_US: "week"
+          zh_Hans: "week"
+          pt_BR: "week"
+          ja_JP: "week"
+      - value: "month"
+        label:
+          en_US: "month"
+          zh_Hans: "month"
+          pt_BR: "month"
+          ja_JP: "month"
+      - value: "year"
+        label:
+          en_US: "year"
+          zh_Hans: "year"
+          pt_BR: "year"
+          ja_JP: "year"
+    label:
+      en_US: tbs
+      zh_Hans: tbs
+      pt_BR: tbs
+      ja_JP: tbs
+    human_description:
+      en_US: "Time-based filter: \"day\", \"week\", \"month\", \"year\""
+      zh_Hans: "Time-based filter: \"day\", \"week\", \"month\", \"year\""
+      pt_BR: "Time-based filter: \"day\", \"week\", \"month\", \"year\""
+      ja_JP: "Time-based filter: \"day\", \"week\", \"month\", \"year\""
+    llm_description: "Time-based filter: \"day\", \"week\", \"month\", \"year\""
+    form: llm
+  - name: sources
+    type: string
+    required: false
+    default: "[\"web\"]"
+    label:
+      en_US: sources
+      zh_Hans: sources
+      pt_BR: sources
+      ja_JP: sources
+    human_description:
+      en_US: "Search sources: \"web\", \"news\", \"images\" (default: [\"web\"])"
+      zh_Hans: "Search sources: \"web\", \"news\", \"images\" (default: [\"web\"])"
+      pt_BR: "Search sources: \"web\", \"news\", \"images\" (default: [\"web\"])"
+      ja_JP: "Search sources: \"web\", \"news\", \"images\" (default: [\"web\"])"
+    llm_description: "Search sources: \"web\", \"news\", \"images\" (default: [\"web\"]) Provide as JSON."
+    form: llm
+  - name: categories
+    type: string
+    required: false
+    label:
+      en_US: categories
+      zh_Hans: categories
+      pt_BR: categories
+      ja_JP: categories
+    human_description:
+      en_US: "Filter by categories: \"github\", \"research\", \"pdf\""
+      zh_Hans: "Filter by categories: \"github\", \"research\", \"pdf\""
+      pt_BR: "Filter by categories: \"github\", \"research\", \"pdf\""
+      ja_JP: "Filter by categories: \"github\", \"research\", \"pdf\""
+    llm_description: "Filter by categories: \"github\", \"research\", \"pdf\" Provide as JSON."
+    form: llm
+  - name: scrapeOptions
+    type: string
+    required: false
+    label:
+      en_US: scrapeOptions
+      zh_Hans: scrapeOptions
+      pt_BR: scrapeOptions
+      ja_JP: scrapeOptions
+    human_description:
+      en_US: "Options for scraping each search result"
+      zh_Hans: "Options for scraping each search result"
+      pt_BR: "Options for scraping each search result"
+      ja_JP: "Options for scraping each search result"
+    llm_description: "Options for scraping each search result Provide as JSON."
+    form: llm
+  - name: timeout
+    type: number
+    required: false
+    min: 0
+    label:
+      en_US: timeout
+      zh_Hans: timeout
+      pt_BR: timeout
+      ja_JP: timeout
+    human_description:
+      en_US: "Request timeout in milliseconds"
+      zh_Hans: "Request timeout in milliseconds"
+      pt_BR: "Request timeout in milliseconds"
+      ja_JP: "Request timeout in milliseconds"
+    llm_description: "Request timeout in milliseconds"
+    form: llm
+extra:
+  python:
+    source: tools/browserless_search.py
