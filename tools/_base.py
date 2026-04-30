@@ -5,7 +5,6 @@ from typing import Any
 import httpx
 from dify_plugin import Tool
 from dify_plugin.entities.tool import ToolInvokeMessage
-from dify_plugin.errors.tool import ToolInvokeError
 
 MCP_ENDPOINT = "https://mcp.browserless.io/mcp"
 
@@ -25,7 +24,7 @@ class BrowserlessMCPTool(Tool):
                 try:
                     arguments[key] = json.loads(value)
                 except json.JSONDecodeError as exc:
-                    raise ToolInvokeError(
+                    raise ValueError(
                         f"Parameter '{key}' must be valid JSON: {exc.msg}"
                     ) from exc
             else:
@@ -37,7 +36,7 @@ class BrowserlessMCPTool(Tool):
     ) -> Generator[ToolInvokeMessage, None, None]:
         api_key = self.runtime.credentials.get("api_key")
         if not api_key:
-            raise ToolInvokeError("Missing Browserless API token in plugin credentials.")
+            raise ValueError("Missing Browserless API token in plugin credentials.")
 
         arguments = self._build_arguments(tool_parameters)
         payload = {
@@ -56,24 +55,24 @@ class BrowserlessMCPTool(Tool):
             with httpx.Client(timeout=httpx.Timeout(180.0, connect=15.0)) as client:
                 response = client.post(MCP_ENDPOINT, headers=headers, json=payload)
         except httpx.HTTPError as exc:
-            raise ToolInvokeError(f"Failed to reach Browserless MCP: {exc}") from exc
+            raise ValueError(f"Failed to reach Browserless MCP: {exc}") from exc
 
         if response.status_code >= 400:
-            raise ToolInvokeError(
+            raise ValueError(
                 f"Browserless MCP returned HTTP {response.status_code}: {response.text[:500]}"
             )
 
         envelope = _parse_jsonrpc(response)
         if "error" in envelope:
             err = envelope["error"]
-            raise ToolInvokeError(
+            raise ValueError(
                 f"Browserless MCP error ({err.get('code')}): {err.get('message')}"
             )
 
         result = envelope.get("result") or {}
         if result.get("isError"):
             text = _join_text(result.get("content") or [])
-            raise ToolInvokeError(text or "Tool returned an error.")
+            raise ValueError(text or "Tool returned an error.")
 
         for block in result.get("content") or []:
             kind = block.get("type")
@@ -115,11 +114,11 @@ def _parse_jsonrpc(response: httpx.Response) -> dict[str, Any]:
                     return json.loads(data)
                 except json.JSONDecodeError:
                     continue
-        raise ToolInvokeError("Browserless MCP returned no parseable SSE event.")
+        raise ValueError("Browserless MCP returned no parseable SSE event.")
     try:
         return json.loads(body)
     except json.JSONDecodeError as exc:
-        raise ToolInvokeError(f"Browserless MCP returned invalid JSON: {exc.msg}") from exc
+        raise ValueError(f"Browserless MCP returned invalid JSON: {exc.msg}") from exc
 
 
 def _join_text(blocks: list[dict[str, Any]]) -> str:
