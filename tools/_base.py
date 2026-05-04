@@ -3,14 +3,18 @@ from collections.abc import Generator
 from typing import Any
 
 import httpx
-from dify_plugin import Tool
 from dify_plugin.entities.tool import ToolInvokeMessage
 
 MCP_ENDPOINT = "https://mcp.browserless.io/mcp"
 
 
-class BrowserlessMCPTool(Tool):
-    """Base class for tools that proxy to the Browserless MCP server."""
+class BrowserlessMCPMixin:
+    """Mixin for tools that proxy to the Browserless MCP server.
+
+    Not a Tool subclass on purpose: the dify_plugin loader scans each tool
+    file's module namespace for Tool subclasses and requires exactly one,
+    so the shared base must not itself be a Tool.
+    """
 
     mcp_tool_name: str = ""
     json_param_keys: tuple[str, ...] = ()
